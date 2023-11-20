@@ -16,10 +16,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('layouts.app');
+});
 
 Route::resource('/admin',AdminController::class);
 Route::resource('/dashboard',DashboardController::class);
 Route::resource('/user',UserController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
