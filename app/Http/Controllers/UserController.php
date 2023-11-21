@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -46,7 +47,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $us = User::find($id);
+        return view('admin.user.edit',compact('us'));
     }
 
     /**
@@ -54,7 +56,19 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'role' => 'required'
+            ]);
+            
+            
+            DB::table('users')->where('id',$id)->update(
+                [
+                    'role' => $request->role,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/user')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**

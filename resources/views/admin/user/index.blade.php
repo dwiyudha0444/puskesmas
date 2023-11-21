@@ -54,7 +54,7 @@
                                         <a class="custom-btn custom-btn-hijau"
                                         href="{{ route('user.show',$us->id) }}">Detail</a>
                                         <a class="custom-btn"
-                                            href="">Edit</a>
+                                            href="{{ url('user-edit',$us->id) }}">Edit</a>
                                         </form>
                                     </td>
                                 </tr>
