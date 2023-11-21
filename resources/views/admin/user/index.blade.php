@@ -17,53 +17,48 @@
 
                 <div class="card-body">
                     <h5 class="card-title">User</span></h5>
-
-                    <table class="table table-borderless datatable">
+                    {{-- <a href="{{ route('user.create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" title="Tambah Data Film" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+                       </svg></a> --}}
+                    <table class="table table-borderless datatable ">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row"><a href="#">#2457</a></th>
-                                <td>Brandon Jacob</td>
-                                <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                <td>$64</td>
-                                <td><span class="badge bg-success">Approved</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#">#2147</a></th>
-                                <td>Bridie Kessler</td>
-                                <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                <td>$47</td>
-                                <td><span class="badge bg-warning">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#">#2049</a></th>
-                                <td>Ashleigh Langosh</td>
-                                <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                <td>$147</td>
-                                <td><span class="badge bg-success">Approved</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#">#2644</a></th>
-                                <td>Angus Grady</td>
-                                <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                <td>$67</td>
-                                <td><span class="badge bg-danger">Rejected</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#">#2644</a></th>
-                                <td>Raheem Lehner</td>
-                                <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                <td>$165</td>
-                                <td><span class="badge bg-success">Approved</span></td>
-                            </tr>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($user as $us)
+                                <tr>
+                                    <th scope="row"><a href="#">{{ $no++ }}</a></th>
+                                    <td>{{ $us->name }}</td>
+                                    <td>{{ $us->email }}</a></td>
+                                    <td>{{ $us->role }}</td>
+                                    <td>{{ $us->foto }}</td>
+                                    
+                                    <td>
+                                        
+                                        <form method="POST" action="{{ route('user.destroy', $us->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
+                                        
+                                        <a class="custom-btn custom-btn-hijau"
+                                        href="{{ route('user.show',$us->id) }}">Detail</a>
+                                        <a class="custom-btn"
+                                            href="">Edit</a>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 

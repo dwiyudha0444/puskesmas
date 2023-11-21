@@ -1258,3 +1258,37 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.custom-btn {
+  background-color: #3498db; /* Ganti kode warna sesuai keinginan Anda */
+  color: #ffffff; /* Ganti warna teks sesuai keinginan Anda */
+  /* Tambahan gaya atau properti lainnya jika diperlukan */
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.custom-btn-hijau {
+  background-color: #2ecc71; /* Ganti kode warna sesuai keinginan Anda */
+  color: #ffffff; /* Ganti warna teks sesuai keinginan Anda */
+  /* Tambahan gaya atau properti lainnya jika diperlukan */
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.custom-btn-merah {
+  background-color: #e74c3c; /* Warna merah */
+  color: #ffffff; /* Warna teks putih */
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  border: none; /* Menghilangkan border */
+  cursor: pointer;
+}

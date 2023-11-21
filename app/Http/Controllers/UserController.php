@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -11,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $user = User::orderBy('id','DESC')->get();
+        return view('admin.user.index',compact('user'));
     }
 
     /**
@@ -35,7 +37,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $us = User::find($id);
+        return view('admin.user.detail',compact('us'));
     }
 
     /**
@@ -59,6 +62,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $us = User::find($id);
+        User::where('id',$id)->delete();
+        return redirect()->route('user.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }
