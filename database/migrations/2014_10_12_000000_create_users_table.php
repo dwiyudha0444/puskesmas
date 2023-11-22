@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['kepala puskesmas', 'kepala apotek','pegawai'])->default('pegawai');
-            $table->string('foto')->default('profil.jpg');
+            $table->string('foto')->default('profil.png');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class ObatKeluarController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.obat_keluar.create');
     }
 
     /**
@@ -30,15 +30,28 @@ class ObatKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Misalkan Anda menerima data dari formulir melalui $request
+        $tgl_keluar = $request->input('tgl_keluar');
+        $keterangan_keluar = $request->input('keterangan_keluar');
+        $id_users = $request->input('id_users');
+
+        // Memasukkan data ke dalam tabel
+        DB::table('tbl_obat_keluar')->insert([
+            'tgl_keluar' => $tgl_keluar,
+            'keterangan_keluar' => $keterangan_keluar,
+            'id_users' => $id_users,
+        ]);
+
+        return redirect('/obat-keluar')->with('success', 'Data Berhasil Diubah');
+
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+    {           
+                
     }
 
     /**
