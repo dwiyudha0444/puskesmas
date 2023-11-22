@@ -31,7 +31,7 @@ Route::resource('/user',UserController::class);
 Route::resource('/profile',ProfileController::class);
 Route::resource('/obat-keluar',ObatKeluarController::class);
 Route::resource('/obat-masuk',ObatMasukController::class);
-Route::resource('/permintaan',ObatPermintaanController::class);
+Route::resource('/permintaan',PermintaanController::class);
 
 Route::get('/user-edit/{id}',[UserController::class,'edit']);
 Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);

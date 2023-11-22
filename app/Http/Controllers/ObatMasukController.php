@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ObatMasuk;
+use DB;
 
 class ObatMasukController extends Controller
 {

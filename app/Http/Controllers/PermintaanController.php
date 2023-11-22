@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Permintaan;
+use DB;
 
 class PermintaanController extends Controller
 {
