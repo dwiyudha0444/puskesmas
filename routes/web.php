@@ -28,6 +28,7 @@ Route::resource('/user',UserController::class);
 Route::resource('/profile',ProfileController::class);
 
 Route::get('/user-edit/{id}',[UserController::class,'edit']);
+Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);
 
 Auth::routes();
 

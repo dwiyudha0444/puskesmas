@@ -19,8 +19,9 @@
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                            <img src="{{ url('assets/profile/img') }}/{{ Auth::user()->foto }}" class="img-fluid" alt="Film">
-                            
+                            <img src="{{ url('assets/profile/img') }}/{{ Auth::user()->foto }}" class="img-fluid"
+                                alt="Film">
+
                         </div>
                     </div>
 
@@ -72,6 +73,7 @@
                     </div>
 
                 </div>
+                <a class="custom-btn" href="{{ url('profile-edit',  Auth::user()->id ) }}">Edit</a>
             </div>
         </section>
 
