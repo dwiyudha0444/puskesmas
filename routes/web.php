@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ObatKeluarController;
+use App\Http\Controllers\ObatMasukController;
+use App\Http\Controllers\PermintaanController;
 
 
 /*
