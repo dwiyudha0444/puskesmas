@@ -43,4 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function obat_keluar()
+    {
+        return $this->hasMany(ObatKeluar::class);
+    }
+
+    public function obat_masuk()
+    {
+        return $this->hasMany(ObatMasuk::class);
+    }
+
+    public function Permintaan()
+    {
+        return $this->hasMany(Permintaan::class);
+    }
 }

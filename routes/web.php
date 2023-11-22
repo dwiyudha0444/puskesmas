@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ObatKeluarController;
 
 
 /*
@@ -26,6 +27,7 @@ Route::resource('/admin',AdminController::class);
 Route::resource('/dashboard',DashboardController::class);
 Route::resource('/user',UserController::class);
 Route::resource('/profile',ProfileController::class);
+Route::resource('/obat-keluar',ObatKeluarController::class);
 
 Route::get('/user-edit/{id}',[UserController::class,'edit']);
 Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);

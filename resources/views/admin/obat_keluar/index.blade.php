@@ -6,7 +6,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin') }}">admin</a></li>
-                    <li class="breadcrumb-item active">user</li>
+                    <li class="breadcrumb-item active">obat-keluar</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -16,19 +16,18 @@
             <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                    <h5 class="card-title">User</span></h5>
-                    {{-- <a href="{{ route('user.create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" title="Tambah Data Film" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                    <h5 class="card-title">Obat Keluar</span></h5>
+                    <a href="{{ route('obat-keluar.create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" title="Tambah Data Film" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
-                       </svg></a> --}}
+                       </svg></a>
                     <table class="table table-borderless datatable ">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Foto</th>
+                                <th scope="col">Tanggal Keluar</th>
+                                <th scope="col">Keterangan Keluar</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -36,26 +35,26 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($user as $us)
+                            @foreach ($obat_keluar as $ok)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
-                                    <td>{{ $us->name }}</td>
-                                    <td>{{ $us->email }}</td>
-                                    <td>{{ $us->role }}</td>
-                                    <td>{{ $us->foto }}</td>
+                                    <td>{{ $ok->tgl_keluar }}</td>
+                                    <td>{{ $ok->keterangan_keluar }}</td>
+                                    <td>{{ $ok->users->id_users }}</td>
+                                    <td>{{ $ok->foto }}</td>
                                     
                                     <td>
                                         
-                                        <form method="POST" action="{{ route('user.destroy', $us->id) }}">
+                                        {{-- <form method="POST" action="{{ route('user.destroy', $ok->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
                                         
                                         <a class="custom-btn custom-btn-hijau"
-                                        href="{{ route('user.show',$us->id) }}">Detail</a>
+                                        href="{{ route('user.show',$ok->id) }}">Detail</a>
                                         <a class="custom-btn"
-                                            href="{{ url('user-edit',$us->id) }}">Edit</a>
-                                        </form>
+                                            href="{{ url('user-edit',$ok->id) }}">Edit</a>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
