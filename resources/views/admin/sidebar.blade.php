@@ -28,13 +28,13 @@
           </li>
 
           <li>
-            <a href="{{ url('obat-keluar') }}">
+            <a href="{{ url('obat-masuk') }}">
               <i class="bi bi-circle"></i><span>Obat Masuk</span>
             </a>
           </li>
 
           <li>
-            <a href="{{ url('obat-keluar') }}">
+            <a href="{{ url('obat-permintaan') }}">
               <i class="bi bi-circle"></i><span>Permintaan</span>
             </a>
           </li>
