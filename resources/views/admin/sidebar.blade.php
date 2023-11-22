@@ -20,6 +20,24 @@
               <i class="bi bi-circle"></i><span>User</span>
             </a>
           </li>
+
+          <li>
+            <a href="{{ url('obat-keluar') }}">
+              <i class="bi bi-circle"></i><span>Obat Keluar</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="{{ url('obat-keluar') }}">
+              <i class="bi bi-circle"></i><span>Obat Masuk</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="{{ url('obat-keluar') }}">
+              <i class="bi bi-circle"></i><span>Permintaan</span>
+            </a>
+          </li>
  
         </ul>
       </li><!-- End Components Nav -->
