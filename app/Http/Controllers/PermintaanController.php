@@ -22,7 +22,7 @@ class PermintaanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.permintaan.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class PermintaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Misalkan Anda menerima data dari formulir melalui $request
+        $tgl_permintaan = $request->input('tgl_permintaan');
+        $keterangan_permintaan = $request->input('keterangan_permintaan');
+        $id_users = $request->input('id_users');
+
+        // Memasukkan data ke dalam tabel
+        DB::table('tbl_permintaan')->insert([
+            'tgl_permintaan' => $tgl_permintaan,
+            'keterangan_permintaan' => $keterangan_permintaan,
+            'id_users' => $id_users,
+        ]);
+        
+        return redirect('/permintaan')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

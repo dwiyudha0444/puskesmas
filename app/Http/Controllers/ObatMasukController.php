@@ -22,7 +22,7 @@ class ObatMasukController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.obat_masuk.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class ObatMasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Misalkan Anda menerima data dari formulir melalui $request
+        $tgl_masuk = $request->input('tgl_masuk');
+        $keterangan_masuk = $request->input('keterangan_masuk');
+        $id_users = $request->input('id_users');
+    
+        // Memasukkan data ke dalam tabel
+        DB::table('tbl_obat_masuk')->insert([
+            'tgl_masuk' => $tgl_masuk,
+            'keterangan_masuk' => $keterangan_masuk,
+            'id_users' => $id_users,
+        ]);
+        
+        return redirect('/obat-masuk')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

@@ -6,7 +6,7 @@
             <h1>Form Elements</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin') }}">admin</a></li>
                     <li class="breadcrumb-item active">Form</li>
                 </ol>
             </nav>
@@ -32,20 +32,20 @@
                             @endif
 
                             <!-- General Form Elements -->
-                            <form method="POST" action="{{ route('obat-keluar.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('obat-masuk.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Keluar</label>
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Masuk</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="tgl_keluar" class="form-control">
+                                        <input type="date" name="tgl_masuk" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Keterangan Keluar</label>
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Keterangan Masuk</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="keterangan_keluar" style="height: 100px"></textarea>
+                                        <textarea class="form-control" name="keterangan_masuk" style="height: 100px"></textarea>
                                     </div>
                                 </div>
 

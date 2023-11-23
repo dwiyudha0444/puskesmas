@@ -23,7 +23,7 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Permintaan</span></h5>
-                    <a href="{{ route('obat-masuk.create') }}"><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                    <a href="{{ route('permintaan.create') }}"><svg xmlns="http://www.w3.org/2000/svg" width="30"
                             height="30" fill="currentColor" title="Tambah Data Film" class="bi bi-bookmark-plus"
                             viewBox="0 0 16 16">
                             <path
@@ -45,26 +45,25 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($permintaan as $ok)
+                            @foreach ($permintaan as $per)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
-                                    <td>{{ $ok->tgl_permintaan }}</td>
-                                    <td>{{ $ok->keterangan_permintaan }}</td>
-                                    <td>{{ $ok->user->name }}</td>
-                                    <td>{{ $ok->foto }}</td>
+                                    <td>{{ $per->tgl_permintaan }}</td>
+                                    <td>{{ $per->keterangan_permintaan }}</td>
+                                    <td>{{ $per->user->name }}</td>
 
                                     <td>
 
-                                        {{-- <form method="POST" action="{{ route('user.destroy', $ok->id) }}">
+                                        <form method="POST" action="{{ route('permintaan.destroy', $per->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
                                         
                                         <a class="custom-btn custom-btn-hijau"
-                                        href="{{ route('user.show',$ok->id) }}">Detail</a>
+                                        href="{{ route('permintaan.show',$per->id) }}">Detail</a>
                                         <a class="custom-btn"
-                                            href="{{ url('user-edit',$ok->id) }}">Edit</a>
-                                        </form> --}}
+                                            href="{{ url('permintaan-edit',$per->id) }}">Edit</a>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_permintaan');
             $table->string('keterangan_permintaan');
-            $table->id('id_users');
+            $table->string('id_users');
             $table->timestamps();
         });
     }
