@@ -35,6 +35,7 @@ Route::resource('/permintaan',PermintaanController::class);
 
 Route::get('/user-edit/{id}',[UserController::class,'edit']);
 Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);
+Route::get('/permintaan-edit/{id}',[PermintaanController::class,'edit']);
 
 Auth::routes();
 

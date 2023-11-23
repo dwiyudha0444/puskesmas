@@ -58,7 +58,8 @@ class PermintaanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $per = Permintaan::find($id);
+        return view('admin.permintaan.edit',compact('per'));
     }
 
     /**
@@ -66,7 +67,21 @@ class PermintaanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'tgl_permintaan' => 'required',
+            'keterangan_permintaan' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_permintaan')->where('id',$id)->update(
+                [
+                    'tgl_permintaan' => $request->tgl_permintaan,
+                    'keterangan_permintaan' => $request->keterangan_permintaan,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/permintaan')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
