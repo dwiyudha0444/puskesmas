@@ -75,6 +75,9 @@ class ObatKeluarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $obke= ObatKeluar::find($id);
+        ObatKeluar::where('id',$id)->delete();
+        return redirect()->route('obat-keluar.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

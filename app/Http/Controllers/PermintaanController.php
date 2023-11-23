@@ -74,6 +74,9 @@ class PermintaanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $per = Permintaan::find($id);
+        Permintaan::where('id',$id)->delete();
+        return redirect()->route('permintaan.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

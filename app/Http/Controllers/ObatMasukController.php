@@ -74,6 +74,9 @@ class ObatMasukController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $obemas = ObatMasuk::find($id);
+        ObatMasuk::where('id',$id)->delete();
+        return redirect()->route('obat-masuk.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

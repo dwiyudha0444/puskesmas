@@ -45,26 +45,24 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($obat_keluar as $ok)
+                            @foreach ($obat_keluar as $obke)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
-                                    <td>{{ $ok->tgl_keluar }}</td>
-                                    <td>{{ $ok->keterangan_keluar }}</td>
-                                    <td>{{ $ok->user->name }}</td>
-                                    <td>{{ $ok->foto }}</td>
-
+                                    <td>{{ $obke->tgl_keluar }}</td>
+                                    <td>{{ $obke->keterangan_keluar }}</td>
+                                    <td>{{ $obke->user->name }}</td>
                                     <td>
 
-                                        {{-- <form method="POST" action="{{ route('user.destroy', $ok->id) }}">
+                                        <form method="POST" action="{{ route('obat-keluar.destroy', $obke->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
                                         
                                         <a class="custom-btn custom-btn-hijau"
-                                        href="{{ route('user.show',$ok->id) }}">Detail</a>
+                                        href="{{ route('obat-keluar.show',$obke->id) }}">Detail</a>
                                         <a class="custom-btn"
-                                            href="{{ url('user-edit',$ok->id) }}">Edit</a>
-                                        </form> --}}
+                                            href="{{ url('obat-keluar-edit',$obke->id) }}">Edit</a>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
