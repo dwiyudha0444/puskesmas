@@ -59,7 +59,8 @@ class ObatKeluarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $obkel = ObatKeluar::find($id);
+        return view('admin.obat_keluar.edit',compact('obkel'));
     }
 
     /**
@@ -67,7 +68,21 @@ class ObatKeluarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'tgl_keluar' => 'required',
+            'keterangan_keluar' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_obat_keluar')->where('id',$id)->update(
+                [
+                    'tgl_keluar' => $request->tgl_keluar,
+                    'keterangan_keluar' => $request->keterangan_keluar,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/obat-keluar')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**

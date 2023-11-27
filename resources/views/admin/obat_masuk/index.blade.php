@@ -59,8 +59,8 @@
                                             @method('DELETE')
                                             <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
                                         
-                                        <a class="custom-btn custom-btn-hijau"
-                                        href="{{ route('obat-masuk.show',$obmas->id) }}">Detail</a>
+                                        {{-- <a class="custom-btn custom-btn-hijau"
+                                        href="{{ route('obat-masuk.show',$obmas->id) }}">Detail</a> --}}
                                         <a class="custom-btn"
                                             href="{{ url('obat-masuk-edit',$obmas->id) }}">Edit</a>
                                         </form>

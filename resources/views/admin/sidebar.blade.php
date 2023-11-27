@@ -12,7 +12,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Obat</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Pemakaian</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
@@ -23,19 +23,56 @@
           </li>
 
           <li>
+            <a href="{{ url('pemakaiaan') }}">
+              <i class="bi bi-circle"></i><span>Pemakaian</span>
+            </a>
+          </li>
+ 
+ 
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Persediaan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+          <li>
             <a href="{{ url('obat-masuk') }}">
               <i class="bi bi-circle"></i><span>Obat Masuk</span>
             </a>
           </li>
 
           <li>
-            <a href="{{ url('permintaan') }}">
-              <i class="bi bi-circle"></i><span>Permintaan</span>
+            <a href="{{ url('persediaan') }}">
+              <i class="bi bi-circle"></i><span>Persediaan</span>
             </a>
           </li>
  
         </ul>
-      </li><!-- End Components Nav -->
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Permintaaan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+          <li>
+            <a href="{{ url('permintaan') }}">
+              <i class="bi bi-circle"></i><span>Permintaan</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="{{ url('permintaan-detail') }}">
+              <i class="bi bi-circle"></i><span>Permintaan Detail</span>
+            </a>
+          </li>
+ 
+        </ul>
+      </li><!-- End Charts Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
@@ -51,6 +88,22 @@
         </ul>
       </li><!-- End Icons Nav -->
 
+
+      <li class="nav-heading">Nama & Kategori Obat</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('obat') }}">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Obat</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('kategori') }}">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Kategori</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
 
       <li class="nav-heading">Pages</li>
 

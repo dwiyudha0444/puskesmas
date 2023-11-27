@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ObatKeluarController;
 use App\Http\Controllers\ObatMasukController;
 use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\KategoriController;
 
 
 /*
@@ -33,9 +35,18 @@ Route::resource('/obat-keluar',ObatKeluarController::class);
 Route::resource('/obat-masuk',ObatMasukController::class);
 Route::resource('/permintaan',PermintaanController::class);
 
+Route::resource('/pemakaiaan',PemakaiaanController::class);
+Route::resource('/persediaan',PersediaanController::class);
+Route::resource('/permintaan-detail',PermintaanDetailController::class);
+
+Route::resource('/obat',ObatController::class);
+Route::resource('/kategori',KategoriController::class);
+
 Route::get('/user-edit/{id}',[UserController::class,'edit']);
 Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);
 Route::get('/permintaan-edit/{id}',[PermintaanController::class,'edit']);
+Route::get('/obat-masuk-edit/{id}',[ObatMasukController::class,'edit']);
+Route::get('/obat-keluar-edit/{id}',[ObatKeluarController::class,'edit']);
 
 Auth::routes();
 

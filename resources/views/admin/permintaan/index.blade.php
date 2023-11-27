@@ -59,8 +59,8 @@
                                             @method('DELETE')
                                             <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
                                         
-                                        <a class="custom-btn custom-btn-hijau"
-                                        href="{{ route('permintaan.show',$per->id) }}">Detail</a>
+                                        {{-- <a class="custom-btn custom-btn-hijau"
+                                        href="{{ route('permintaan.show',$per->id) }}">Detail</a> --}}
                                         <a class="custom-btn"
                                             href="{{ url('permintaan-edit',$per->id) }}">Edit</a>
                                         </form>

@@ -58,7 +58,8 @@ class ObatMasukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $obmas = ObatMasuk::find($id);
+        return view('admin.obat_masuk.edit',compact('obmas'));
     }
 
     /**
@@ -66,7 +67,21 @@ class ObatMasukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'tgl_masuk' => 'required',
+            'keterangan_masuk' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_obat_masuk')->where('id',$id)->update(
+                [
+                    'tgl_masuk' => $request->tgl_masuk,
+                    'keterangan_masuk' => $request->keterangan_masuk,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/obat-masuk')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
