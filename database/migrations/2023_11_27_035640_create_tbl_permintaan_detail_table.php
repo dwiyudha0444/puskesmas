@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_obat_keluar', function (Blueprint $table) {
+        Schema::create('tbl_permintaan_detail', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl_keluar');
-            $table->string('keterangan_keluar');
-            $table->bigInteger('id_users');
+            $table->bigInteger('id_obat');
+            $table->integer('persediaan');
+            $table->enum('role', ['a','b'])->default('a');
+            $table->bigInteger('id_permintaan');
             $table->timestamps();
-
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_obat_keluar');
+        Schema::dropIfExists('tbl_permintaan_detail');
     }
 };

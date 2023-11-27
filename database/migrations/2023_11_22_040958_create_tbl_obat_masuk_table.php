@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_masuk');
             $table->string('keterangan_masuk');
-            $table->string('id_users');
+            $table->bigInteger('id_users');
             $table->timestamps();
         });
     }

@@ -11,6 +11,10 @@ use App\Http\Controllers\PermintaanController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\KategoriController;
 
+use App\Http\Controllers\PermintaanDetailController;
+use App\Http\Controllers\PemakaiaanController;
+use App\Http\Controllers\PersediaanController;
+
 
 /*
 |--------------------------------------------------------------------------

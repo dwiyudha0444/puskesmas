@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_obat_keluar', function (Blueprint $table) {
+        Schema::create('tbl_persediaan', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl_keluar');
-            $table->string('keterangan_keluar');
-            $table->bigInteger('id_users');
+            $table->bigInteger('id_obat');
+            $table->date('expired');
+            $table->integer('persediaan_awal');
+            $table->integer('jumlah_masuk');
+            $table->integer('persediaan');
+            $table->bigInteger('id_obat_masuk');
             $table->timestamps();
-
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_obat_keluar');
+        Schema::dropIfExists('tbl_persediaan');
     }
 };
