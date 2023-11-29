@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persediaan;
+use App\Models\Obat;
 use DB;
 
 class PersediaanController extends Controller
@@ -13,7 +14,7 @@ class PersediaanController extends Controller
      */
     public function index()
     {
-        $persediaan = Obat::orderBy('id','DESC')->get();
+        $persediaan = Persediaan::orderBy('id','DESC')->get();
         return view('admin.persediaan.index',compact('persediaan'));
     }
 
@@ -46,7 +47,9 @@ class PersediaanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rel_obat = Obat::all();
+        $per = Persediaan::find($id);
+        return view('admin.persediaan.edit',compact('per','rel_obat'));
     }
 
     /**
@@ -54,7 +57,27 @@ class PersediaanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_obat' => 'required',
+            'expired' => 'required',
+            'persediaan_awal' => 'required',
+            'jumlah_masuk' => 'required',
+            'persediaan' => 'required',
+            ]);
+            
+            
+            DB::table('tbl_persediaan')->where('id',$id)->update(
+                [
+                    'id_obat' => $request->id_obat,
+                    'expired' => $request->expired,
+                    'persediaan_awal' => $request->persediaan_awal,
+                    'jumlah_masuk' => $request->jumlah_masuk,
+                    'persediaan' => $request->persediaan,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/persediaan')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
@@ -62,6 +85,9 @@ class PersediaanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $per = Persediaan::find($id);
+        Persediaan::where('id',$id)->delete();
+        return redirect()->route('persediaan.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

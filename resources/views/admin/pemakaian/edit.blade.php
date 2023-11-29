@@ -3,11 +3,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Form Elements</h1>
+            <h1>Profile</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Form</li>
+                    <li class="breadcrumb-item"><a href="{{ url('admin') }}">admin</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('pemakaian') }}">pemakaian</a></li>
+                    <li class="breadcrumb-item active">edit</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -32,32 +33,29 @@
                             @endif
 
                             <!-- General Form Elements -->
-                            <form method="POST" action="{{ route('obat-keluar.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('pemakaian.update', $pem->id) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="row mb-3">
-                                    <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Keluar</label>
+                                    <label class="col-sm-2 col-form-label">Obat</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="tgl_keluar" class="form-control">
+                                        <select class="form-select" name="id_obat">
+                                            <option selected>-- Pilih Obat --</option>
+                                            @foreach($rel_obat as $ob)
+                                            @php
+                                            $sel2 = (old('id_obat') == $ob->id)? 'selected':'';
+                                            @endphp
+                                            <option value="{{ $ob->id }}" {{ $sel2 }}>{{ $ob->nama_obat }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Keterangan Keluar</label>
+                                    <label for="jenis" class="col-sm-2 col-form-label">Jumlah Keluar</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="keterangan_keluar" style="height: 100px"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-sm-10">
-                                        <input type="hidden" name="id_users" value="{{ Auth::user()->id }}" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-sm-10">
-                                        <input type="hidden" name="id_obat" value=1 class="form-control">
+                                        <input type="text" name="jumlah_keluar" value="{{ $pem->jumlah_keluar }}" class="form-control">
                                     </div>
                                 </div>
 

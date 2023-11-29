@@ -51,6 +51,8 @@ Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);
 Route::get('/permintaan-edit/{id}',[PermintaanController::class,'edit']);
 Route::get('/obat-masuk-edit/{id}',[ObatMasukController::class,'edit']);
 Route::get('/obat-keluar-edit/{id}',[ObatKeluarController::class,'edit']);
+Route::get('/pemakaian-edit/{id}',[PemakaianController::class,'edit']);
+Route::get('/persediaan-edit/{id}',[PersediaanController::class,'edit']);
 
 Auth::routes();
 

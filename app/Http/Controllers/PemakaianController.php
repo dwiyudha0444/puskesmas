@@ -64,7 +64,9 @@ class PemakaianController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rel_obat = Obat::all();
+        $pem = Pemakaian::find($id);
+        return view('admin.pemakaian.edit',compact('pem','rel_obat'));
     }
 
     /**
@@ -72,7 +74,21 @@ class PemakaianController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_obat' => 'required',
+            'jumlah_keluar' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_pemakaian')->where('id',$id)->update(
+                [
+                    'id_obat' => $request->id_obat,
+                    'jumlah_keluar' => $request->jumlah_keluar,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/pemakaian')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**

@@ -56,6 +56,12 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="id_obat" value=1 class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Simpan</label>
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

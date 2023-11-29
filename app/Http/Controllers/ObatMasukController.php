@@ -34,14 +34,22 @@ class ObatMasukController extends Controller
         $tgl_masuk = $request->input('tgl_masuk');
         $keterangan_masuk = $request->input('keterangan_masuk');
         $id_users = $request->input('id_users');
+        $id_obat_masuk = $request->input('id_obat_masuk');
+        $id_obat = $request->input('id_obat');
     
-        // Memasukkan data ke dalam tabel
-        DB::table('tbl_obat_masuk')->insert([
+        // Memasukkan data ke dalam tabel tbl_obat_keluar dan mendapatkan ID baru
+        $obatMasukId = DB::table('tbl_obat_masuk')->insertGetId([
             'tgl_masuk' => $tgl_masuk,
             'keterangan_masuk' => $keterangan_masuk,
             'id_users' => $id_users,
         ]);
-        
+
+        // Memasukkan data ke dalam tabel tbl_persediaan dengan menggunakan ID baru
+        DB::table('tbl_persediaan')->insert([
+            'id_obat_masuk' => $obatMasukId,
+            'id_obat' => $id_obat,
+        ]);
+
         return redirect('/obat-masuk')->with('success', 'Data Berhasil Diubah');
     }
 
