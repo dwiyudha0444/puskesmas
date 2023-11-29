@@ -38,7 +38,9 @@
                                 <th scope="col">Nama Obat</th>
                                 <th scope="col">Jumlah Keluar</th>
                                 <th scope="col">Tanggal Keluar</th>
+                                @if(auth()->user()->role == 'apoteker')
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +69,7 @@
                                     @else
                                     <td>{{ $pem->obat_keluar->tgl_keluar }}</td>
                                     @endempty
-
+                                    @if(auth()->user()->role == 'apoteker')
                                     <td>
 
                                         <form method="POST" action="{{ route('pemakaian.destroy', $pem->id) }}">
@@ -81,6 +83,7 @@
                                             href="{{ url('pemakaian-edit',$pem->id) }}">Edit</a>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

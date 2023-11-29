@@ -41,7 +41,9 @@
                                 <th scope="col">Jumlah Keluar</th>
                                 <th scope="col">Persediaan</th>
                                 <th scope="col">Tanggal Keluar</th>
+                                @if(auth()->user()->role == 'kepala apoteker')
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +89,7 @@
                                     @else
                                     <td>{{ $per->obat_masuk->tgl_masuk }}</td>
                                     @endempty
-                                    
+                                    @if(auth()->user()->role == 'kepala apoteker')
                                     <td>
 
                                         <form method="POST" action="{{ route('persediaan.destroy', $per->id) }}">
@@ -101,6 +103,7 @@
                                             href="{{ url('persediaan-edit',$per->id) }}">Edit</a>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

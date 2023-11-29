@@ -38,7 +38,9 @@
                                 <th scope="col">Tanggal Masuk</th>
                                 <th scope="col">Keterangan Masuk</th>
                                 <th scope="col">Username</th>
+                                @if(auth()->user()->role == 'kepala apoteker')
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +53,7 @@
                                     <td>{{ $obmas->tgl_masuk }}</td>
                                     <td>{{ $obmas->keterangan_masuk }}</td>
                                     <td>{{ $obmas->user->name }}</td>
-
+                                    @if(auth()->user()->role == 'kepala apoteker')
                                     <td>
 
                                         <form method="POST" action="{{ route('obat-masuk.destroy', $obmas->id) }}">
@@ -65,6 +67,7 @@
                                             href="{{ url('obat-masuk-edit',$obmas->id) }}">Edit</a>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

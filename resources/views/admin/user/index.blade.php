@@ -29,7 +29,9 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Foto</th>
+                                @if(auth()->user()->role == 'kepala puskesmas')
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +45,7 @@
                                     <td>{{ $us->email }}</td>
                                     <td>{{ $us->role }}</td>
                                     <td>{{ $us->foto }}</td>
-                                    
+                                    @if(auth()->user()->role == 'kepala puskesmas')
                                     <td>
                                         
                                         <form method="POST" action="{{ route('user.destroy', $us->id) }}">
@@ -56,7 +58,9 @@
                                         <a class="custom-btn"
                                             href="{{ url('user-edit',$us->id) }}">Edit</a>
                                         </form>
+
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

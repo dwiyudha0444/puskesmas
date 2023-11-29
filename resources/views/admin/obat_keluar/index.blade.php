@@ -38,7 +38,10 @@
                                 <th scope="col">Tanggal Keluar</th>
                                 <th scope="col">Keterangan Keluar</th>
                                 <th scope="col">Username</th>
-                                <th scope="col">Action</th>
+                                @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
+                                    <th scope="col">Action</th>
+                                @endif
+
                             </tr>
                         </thead>
                         <tbody>
@@ -51,19 +54,21 @@
                                     <td>{{ $obke->tgl_keluar }}</td>
                                     <td>{{ $obke->keterangan_keluar }}</td>
                                     <td>{{ $obke->user->name }}</td>
-                                    <td>
+                                    @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
+                                        <td>
 
-                                        <form method="POST" action="{{ route('obat-keluar.destroy', $obke->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
-                                        
-                                        {{-- <a class="custom-btn custom-btn-hijau"
+                                            <form method="POST" action="{{ route('obat-keluar.destroy', $obke->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
+
+                                                {{-- <a class="custom-btn custom-btn-hijau"
                                         href="{{ route('obat-keluar.show',$obke->id) }}">Detail</a> --}}
-                                        <a class="custom-btn"
-                                            href="{{ url('obat-keluar-edit',$obke->id) }}">Edit</a>
-                                        </form>
-                                    </td>
+                                                <a class="custom-btn"
+                                                    href="{{ url('obat-keluar-edit', $obke->id) }}">Edit</a>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

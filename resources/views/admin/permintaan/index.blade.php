@@ -38,7 +38,9 @@
                                 <th scope="col">Tanggal Permintaan</th>
                                 <th scope="col">Keterangan Permintaan</th>
                                 <th scope="col">Username</th>
+                                @if(auth()->user()->role == 'kepala apoteker')
                                 <th scope="col">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +53,7 @@
                                     <td>{{ $per->tgl_permintaan }}</td>
                                     <td>{{ $per->keterangan_permintaan }}</td>
                                     <td>{{ $per->user->name }}</td>
-
+                                    @if(auth()->user()->role == 'kepala apoteker')
                                     <td>
 
                                         <form method="POST" action="{{ route('permintaan.destroy', $per->id) }}">
@@ -65,6 +67,7 @@
                                             href="{{ url('permintaan-edit',$per->id) }}">Edit</a>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
