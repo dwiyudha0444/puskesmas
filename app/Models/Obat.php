@@ -16,4 +16,9 @@ class Obat extends Model
     {
         return $this->belongsTo(Kategori::class,'id_kategori');
     }
+
+    public function pemakaian()
+    {
+        return $this->hasMany(Pemakaian::class);
+    }
 }

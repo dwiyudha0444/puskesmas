@@ -16,4 +16,10 @@ class ObatKeluar extends Model
     {
         return $this->belongsTo(User::class,'id_users');
     }
+
+    public function pemakaian()
+    {
+        return $this->hasOne(Pemakaian::class);
+    }
+
 }

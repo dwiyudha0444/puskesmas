@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Persediaan;
+use DB;
 
 class PersediaanController extends Controller
 {
@@ -11,7 +13,8 @@ class PersediaanController extends Controller
      */
     public function index()
     {
-        //
+        $persediaan = Obat::orderBy('id','DESC')->get();
+        return view('admin.persediaan.index',compact('persediaan'));
     }
 
     /**

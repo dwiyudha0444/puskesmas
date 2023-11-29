@@ -23,7 +23,7 @@
           </li>
 
           <li>
-            <a href="{{ url('pemakaiaan') }}">
+            <a href="{{ url('pemakaian') }}">
               <i class="bi bi-circle"></i><span>Pemakaian</span>
             </a>
           </li>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PermintaanDetail;
+use DB;
 
 class PermintaanDetailController extends Controller
 {
@@ -11,7 +13,8 @@ class PermintaanDetailController extends Controller
      */
     public function index()
     {
-        //
+        $permintaan_detail = Obat::orderBy('id','DESC')->get();
+        return view('admin.permintaan_detail.index',compact('permintaan_detail'));
     }
 
     /**

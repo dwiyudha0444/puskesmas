@@ -12,7 +12,7 @@ use App\Http\Controllers\ObatController;
 use App\Http\Controllers\KategoriController;
 
 use App\Http\Controllers\PermintaanDetailController;
-use App\Http\Controllers\PemakaiaanController;
+use App\Http\Controllers\PemakaianController;
 use App\Http\Controllers\PersediaanController;
 
 
@@ -39,7 +39,7 @@ Route::resource('/obat-keluar',ObatKeluarController::class);
 Route::resource('/obat-masuk',ObatMasukController::class);
 Route::resource('/permintaan',PermintaanController::class);
 
-Route::resource('/pemakaiaan',PemakaiaanController::class);
+Route::resource('/pemakaian',PemakaianController::class);
 Route::resource('/persediaan',PersediaanController::class);
 Route::resource('/permintaan-detail',PermintaanDetailController::class);
 
