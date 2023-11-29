@@ -51,12 +51,43 @@
                             @foreach ($persediaan as $per)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
+
+                                    @empty($per->obat->nama_obat)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->obat->nama_obat }}</td>
+                                    @endempty
+
+                                    @empty($per->expired)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->expired }}</td>
+                                    @endempty
+
+                                    @empty($per->persediaan_awal)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->persediaan_awal }}</td>
+                                    @endempty
+
+                                    @empty($per->jumlah_masuk)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->jumlah_masuk }}</td>
+                                    @endempty
+                                    
+                                    @empty($per->persediaan)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->persediaan }}</td>
+                                    @endempty
+                                    
+                                    @empty($per->obat_masuk->tgl_masuk)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $per->obat_masuk->tgl_masuk }}</td>
+                                    @endempty
+                                    
                                     <td>
 
                                         <form method="POST" action="{{ route('persediaan.destroy', $per->id) }}">

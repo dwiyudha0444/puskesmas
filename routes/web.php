@@ -31,28 +31,29 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::resource('/admin',AdminController::class);
-Route::resource('/dashboard',DashboardController::class);
-Route::resource('/user',UserController::class);
-Route::resource('/profile',ProfileController::class);
-Route::resource('/obat-keluar',ObatKeluarController::class);
-Route::resource('/obat-masuk',ObatMasukController::class);
-Route::resource('/permintaan',PermintaanController::class);
+Route::resource('/admin',AdminController::class)->middleware('auth');
+Route::resource('/dashboard',DashboardController::class)->middleware('auth');
+Route::resource('/user',UserController::class)->middleware('auth');
+Route::resource('/profile',ProfileController::class)->middleware('auth');
+Route::resource('/obat-keluar',ObatKeluarController::class)->middleware('auth');
+Route::resource('/obat-masuk',ObatMasukController::class)->middleware('auth');
+Route::resource('/permintaan',PermintaanController::class)->middleware('auth');
 
-Route::resource('/pemakaian',PemakaianController::class);
-Route::resource('/persediaan',PersediaanController::class);
-Route::resource('/permintaan-detail',PermintaanDetailController::class);
+Route::resource('/pemakaian',PemakaianController::class)->middleware('auth');
+Route::resource('/persediaan',PersediaanController::class)->middleware('auth');
+Route::resource('/permintaan-detail',PermintaanDetailController::class)->middleware('auth');
 
-Route::resource('/obat',ObatController::class);
-Route::resource('/kategori',KategoriController::class);
+Route::resource('/obat',ObatController::class)->middleware('auth');
+Route::resource('/kategori',KategoriController::class)->middleware('auth');
 
-Route::get('/user-edit/{id}',[UserController::class,'edit']);
-Route::get('/profile-edit/{id}',[ProfileController::class,'edit']);
-Route::get('/permintaan-edit/{id}',[PermintaanController::class,'edit']);
-Route::get('/obat-masuk-edit/{id}',[ObatMasukController::class,'edit']);
-Route::get('/obat-keluar-edit/{id}',[ObatKeluarController::class,'edit']);
-Route::get('/pemakaian-edit/{id}',[PemakaianController::class,'edit']);
-Route::get('/persediaan-edit/{id}',[PersediaanController::class,'edit']);
+Route::get('/user-edit/{id}',[UserController::class,'edit'])->middleware('auth');
+Route::get('/profile-edit/{id}',[ProfileController::class,'edit'])->middleware('auth');
+Route::get('/permintaan-edit/{id}',[PermintaanController::class,'edit'])->middleware('auth');
+Route::get('/obat-masuk-edit/{id}',[ObatMasukController::class,'edit'])->middleware('auth');
+Route::get('/obat-keluar-edit/{id}',[ObatKeluarController::class,'edit'])->middleware('auth');
+Route::get('/pemakaian-edit/{id}',[PemakaianController::class,'edit'])->middleware('auth');
+Route::get('/persediaan-edit/{id}',[PersediaanController::class,'edit'])->middleware('auth');
+Route::get('/permintaan-detail-edit/{id}',[PermintaanDetailController::class,'edit'])->middleware('auth');
 
 Auth::routes();
 

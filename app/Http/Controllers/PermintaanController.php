@@ -30,19 +30,27 @@ class PermintaanController extends Controller
      */
     public function store(Request $request)
     {
-        // Misalkan Anda menerima data dari formulir melalui $request
-        $tgl_permintaan = $request->input('tgl_permintaan');
-        $keterangan_permintaan = $request->input('keterangan_permintaan');
-        $id_users = $request->input('id_users');
-
-        // Memasukkan data ke dalam tabel
-        DB::table('tbl_permintaan')->insert([
-            'tgl_permintaan' => $tgl_permintaan,
-            'keterangan_permintaan' => $keterangan_permintaan,
-            'id_users' => $id_users,
-        ]);
-        
-        return redirect('/permintaan')->with('success', 'Data Berhasil Diubah');
+                // Misalkan Anda menerima data dari formulir melalui $request
+                $tgl_permintaan = $request->input('tgl_permintaan');
+                $keterangan_permintaan = $request->input('keterangan_permintaan');
+                $id_users = $request->input('id_users');
+                $id_permintaan = $request->input('id_permintaan');
+                $id_obat = $request->input('id_obat');
+            
+                // Memasukkan data ke dalam tabel tbl_permintaan dan mendapatkan ID baru
+                $obatPermintaanId = DB::table('tbl_permintaan')->insertGetId([
+                    'tgl_permintaan' => $tgl_permintaan,
+                    'keterangan_permintaan' => $keterangan_permintaan,
+                    'id_users' => $id_users,
+                ]);
+            
+                // Memasukkan data ke dalam tabel tbl_permintaan dengan menggunakan ID baru
+                DB::table('tbl_permintaan_detail')->insert([
+                    'id_permintaan' => $obatPermintaanId,
+                    'id_obat' => $id_obat,
+                ]);
+            
+                return redirect('/permintaan')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

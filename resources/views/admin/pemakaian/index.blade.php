@@ -48,9 +48,26 @@
                             @foreach ($pemakaian as $pem)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
+
+                                    @empty($pem->obat->nama_obat)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $pem->obat->nama_obat }}</td>
+                                    @endempty
+
+                                    @empty($pem->jumlah_keluar)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $pem->jumlah_keluar }}</td>
+                                    @endempty
+                                    
+
+                                    @empty($pem->obat_keluar->tgl_keluar)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $pem->obat_keluar->tgl_keluar }}</td>
+                                    @endempty
+
                                     <td>
 
                                         <form method="POST" action="{{ route('pemakaian.destroy', $pem->id) }}">

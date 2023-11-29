@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PermintaanDetail;
+use App\Models\Obat;
 use DB;
 
 class PermintaanDetailController extends Controller
@@ -13,7 +14,7 @@ class PermintaanDetailController extends Controller
      */
     public function index()
     {
-        $permintaan_detail = Obat::orderBy('id','DESC')->get();
+        $permintaan_detail = PermintaanDetail::orderBy('id','DESC')->get();
         return view('admin.permintaan_detail.index',compact('permintaan_detail'));
     }
 
@@ -46,7 +47,9 @@ class PermintaanDetailController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rel_obat = Obat::all();
+        $per = PermintaanDetail::find($id);
+        return view('admin.permintaan_detail.edit',compact('per','rel_obat'));
     }
 
     /**
@@ -54,7 +57,23 @@ class PermintaanDetailController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_obat' => 'required',
+            'persediaan' => 'required',
+            'status' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_permintaan_detail')->where('id',$id)->update(
+                [
+                    'id_obat' => $request->id_obat,
+                    'persediaan' => $request->persediaan,
+                    'status' => $request->status,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/permintaan-detail')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
@@ -62,6 +81,9 @@ class PermintaanDetailController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $per = PermintaanDetail::find($id);
+        PermintaanDetail::where('id',$id)->delete();
+        return redirect()->route('permintaan-detail.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

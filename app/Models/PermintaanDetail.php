@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class PermintaanDetail extends Model
 {
-    use HasFactory;
+    //tambahkan kode untuk mapping ke tabel berita
+    protected $table = 'tbl_permintaan_detail';
+    //mapping ke kolom fieldnya
+    protected $fillable = ['id_obat','persediaan','status','id_permintaan'];
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class,'id_obat');
+    }
+
+    public function permintaan()
+    {
+        return $this->belongsTo(Permintaan::class,'id_permintaan');
+    }
 }
