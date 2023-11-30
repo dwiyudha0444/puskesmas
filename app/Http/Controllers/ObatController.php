@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Obat;
+use App\Models\Kategori;
 use DB;
 
 class ObatController extends Controller
@@ -22,7 +23,10 @@ class ObatController extends Controller
      */
     public function create()
     {
-        //
+        //ambil master untuk dilooping di select option
+        $rel_kategori = Kategori::all();
+        //arahkan ke form input data
+        return view('admin.obat.create',compact('rel_kategori'));
     }
 
     /**
@@ -30,7 +34,22 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // Misalkan Anda menerima data dari formulir melalui $request
+        $id_kategori = $request->input('id_kategori');
+        $nama_obat = $request->input('nama_obat');
+        $kode_obat = $request->input('kode_obat');
+        $satuan = $request->input('satuan');
+        
+        // Memasukkan data ke dalam tabel
+        DB::table('tbl_obat')->insert([
+            'id_kategori' => $id_kategori,
+            'nama_obat' => $nama_obat,
+            'kode_obat' => $kode_obat,
+            'satuan' => $satuan,
+            ]);
+                
+        return redirect('/obat')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -46,7 +65,11 @@ class ObatController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //ambil master untuk dilooping di select option
+        $rel_kategori = Kategori::all();
+        $ob = Obat::find($id);
+        //arahkan ke form input data
+        return view('admin.obat.edit',compact('ob','rel_kategori'));
     }
 
     /**
@@ -54,7 +77,25 @@ class ObatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_kategori' => 'required',
+            'nama_obat' => 'required',
+            'kode_obat' => 'required',
+            'satuan' => 'required'
+            ]);
+            
+            
+            DB::table('tbl_obat')->where('id',$id)->update(
+                [
+                    'id_kategori' => $request->id_kategori,
+                    'nama_obat' => $request->nama_obat,
+                    'kode_obat' => $request->kode_obat,
+                    'satuan' => $request->satuan,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/obat')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
@@ -62,6 +103,9 @@ class ObatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ob = Obat::find($id);
+        Obat::where('id',$id)->delete();
+        return redirect()->route('obat.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

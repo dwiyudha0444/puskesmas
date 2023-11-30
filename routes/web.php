@@ -54,6 +54,8 @@ Route::get('/obat-keluar-edit/{id}',[ObatKeluarController::class,'edit'])->middl
 Route::get('/pemakaian-edit/{id}',[PemakaianController::class,'edit'])->middleware('auth');
 Route::get('/persediaan-edit/{id}',[PersediaanController::class,'edit'])->middleware('auth');
 Route::get('/permintaan-detail-edit/{id}',[PermintaanDetailController::class,'edit'])->middleware('auth');
+Route::get('/obat-edit/{id}',[ObatController::class,'edit'])->middleware('auth');
+Route::get('/kategori-edit/{id}',[KategoriController::class,'edit'])->middleware('auth');
 
 Auth::routes();
 

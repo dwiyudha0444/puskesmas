@@ -22,7 +22,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        //arahkan ke form input data
+        return view('admin.kategori.create');
     }
 
     /**
@@ -30,7 +31,16 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                
+        // Misalkan Anda menerima data dari formulir melalui $request
+        $nama_kategori = $request->input('nama_kategori');
+        
+        // Memasukkan data ke dalam tabel
+        DB::table('tbl_kategori')->insert([
+            'nama_kategori' => $nama_kategori,
+            ]);
+                
+        return redirect('/kategori')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -46,7 +56,9 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kat = Kategori::find($id);
+        //arahkan ke form input data
+        return view('admin.kategori.edit',compact('kat'));
     }
 
     /**
@@ -54,7 +66,19 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+            ]);
+            
+            
+            DB::table('tbl_kategori')->where('id',$id)->update(
+                [
+                    'nama_kategori' => $request->nama_kategori,
+                    'created_at' => now(),
+              ]);
+            
+            return redirect('/kategori')
+            ->with('success','Data Berhasil Diubah');
     }
 
     /**
@@ -62,6 +86,9 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ob = Kategori::find($id);
+        Kategori::where('id',$id)->delete();
+        return redirect()->route('kategori.index')
+            ->with('success','Data Berhasil Dihapus');
     }
 }

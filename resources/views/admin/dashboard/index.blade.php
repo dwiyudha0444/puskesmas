@@ -33,7 +33,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>145</h4>
+                      <h4>{{ $totalObatKeluar }}</h4>
                     </div>
                   </div>
                 </div>
@@ -53,7 +53,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>$3,264</h4>
+                      <h4>{{ $totalPemakaian }}</h4>
                     </div>
                   </div>
                 </div>
@@ -74,7 +74,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>145</h4>
+                      <h4>{{ $totalObatMasuk }}</h4>
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>$3,264</h4>
+                      <h4>{{ $totalPersediaan }}</h4>
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>145</h4>
+                      <h4>{{ $totalPermintaan }}</h4>
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>$3,264</h4>
+                      <h4>{{ $totalPermintaanDetail }}</h4>
                     </div>
                   </div>
                 </div>
@@ -156,7 +156,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h4>1244</h4>
+                      <h4>{{ $totalUser }}</h4>
                     </div>
                   </div>
 

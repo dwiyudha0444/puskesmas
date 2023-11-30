@@ -30,30 +30,6 @@ class ObatKeluarController extends Controller
      * Store a newly created resource in storage.
      */
 
-    //  public function store(Request $request)
-    //  {
-    //      // Misalkan Anda menerima data dari formulir melalui $request
-    //      $tgl_keluar = $request->input('tgl_keluar');
-    //      $keterangan_keluar = $request->input('keterangan_keluar');
-    //      $id_users = $request->input('id_users');
-    //      $field1 = $request->input('field1');
-    //      $field2 = $request->input('field2');
-     
-    //      // Memasukkan data ke dalam tabel
-    //      $obatKeluar = ObatKeluar::create([
-    //          'tgl_keluar' => $tgl_keluar,
-    //          'keterangan_keluar' => $keterangan_keluar,
-    //          'id_users' => $id_users,
-    //      ]);
-     
-    //      $obatKeluar->detailObatKeluar()->create([
-    //          'field1' => $field1,
-    //          'field2' => $field2,
-    //      ]);
-     
-    //      return redirect('/obat-keluar')->with('success', 'Data Berhasil Diubah');
-    //  }
-
     public function store(Request $request)
     {
         // Misalkan Anda menerima data dari formulir melalui $request
