@@ -38,8 +38,8 @@
                                 <th scope="col">Tanggal Masuk</th>
                                 <th scope="col">Keterangan Masuk</th>
                                 <th scope="col">Username</th>
-                                @if(auth()->user()->role == 'kepala apoteker')
-                                <th scope="col">Action</th>
+                                @if (auth()->user()->role == 'kepala apoteker')
+                                    <th scope="col">Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -52,21 +52,27 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
                                     <td>{{ $obmas->tgl_masuk }}</td>
                                     <td>{{ $obmas->keterangan_masuk }}</td>
-                                    <td>{{ $obmas->user->name }}</td>
-                                    @if(auth()->user()->role == 'kepala apoteker')
-                                    <td>
+                                    @empty($obmas->user->name)
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
+                                    @else
+                                        <td> {{ $obmas->user->name }} </td>
+                                    @endempty
+                                    @if (auth()->user()->role == 'kepala apoteker')
+                                        <td>
 
-                                        <form method="POST" action="{{ route('obat-masuk.destroy', $obmas->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
-                                        
-                                        {{-- <a class="custom-btn custom-btn-hijau"
+                                            <form method="POST" action="{{ route('obat-masuk.destroy', $obmas->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
+
+                                                {{-- <a class="custom-btn custom-btn-hijau"
                                         href="{{ route('obat-masuk.show',$obmas->id) }}">Detail</a> --}}
-                                        <a class="custom-btn"
-                                            href="{{ url('obat-masuk-edit',$obmas->id) }}">Edit</a>
-                                        </form>
-                                    </td>
+                                                <a class="custom-btn"
+                                                    href="{{ url('obat-masuk-edit', $obmas->id) }}">Edit</a>
+                                            </form>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

@@ -51,7 +51,13 @@
                             @foreach ($obat as $ob)
                                 <tr>
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
+                                    
+                                    @empty($ob->kategori->nama_kategori)
+                                    <td><p>belum diisi</p></td>
+                                    @else
                                     <td>{{ $ob->kategori->nama_kategori }}</td>
+                                    @endempty
+                                    
                                     <td>{{ $ob->nama_obat }}</td>
                                     <td>{{ $ob->kode_obat }}</td>
                                     <td>{{ $ob->satuan }}</td>

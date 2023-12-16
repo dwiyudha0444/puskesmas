@@ -52,7 +52,11 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
                                     <td>{{ $per->tgl_permintaan }}</td>
                                     <td>{{ $per->keterangan_permintaan }}</td>
-                                    <td>{{ $per->user->name }}</td>
+                                    @empty($per->user->name)
+                                    <td><p>belum diisi</p></td>
+                                    @else
+                                    <td> {{ $per->user->name }} </td>
+                                    @endempty
                                     @if(auth()->user()->role == 'kepala apoteker')
                                     <td>
 

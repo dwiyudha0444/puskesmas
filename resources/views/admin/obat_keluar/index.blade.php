@@ -53,7 +53,12 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
                                     <td>{{ $obke->tgl_keluar }}</td>
                                     <td>{{ $obke->keterangan_keluar }}</td>
-                                    <td>{{ $obke->user->name }}</td>
+                                    @empty($obke->user->name)
+                                    <td><p>belum diisi</p></td>
+                                    @else
+                                    <td> {{ $obke->user->name }} </td>
+                                    @endempty
+
                                     @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
                                         <td>
 

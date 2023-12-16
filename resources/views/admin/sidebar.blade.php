@@ -105,6 +105,14 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+      <li class="nav-heading">PDF</li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{ url('kategori') }}">
+            <i class="bi bi-menu-button-wide"></i>
+            <span>Kategori</span>
+          </a>
+        </li>
+        
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
