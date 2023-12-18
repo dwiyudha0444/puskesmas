@@ -56,7 +56,7 @@
         </div>
         
         <div style="float: right;">
-            <p>TANGGAL PEMAKAIAN: <strong>12 Desember 2023</strong></p>
+            <p>TANGGAL PEMAKAIAN: <strong>DESEMBER</strong></p>
             <p>NO PEMAKAIAN: <strong>OUT-1</strong></p>
             <p>PENANGGUNG JAWAB: <strong>{{ Auth::user()->name }}</strong></p>
         </div>
@@ -79,7 +79,7 @@
                 @foreach ($pemakaian as $pem)
                 <tr>
                     <td>{{ $no++ }}</td>
-
+                    
                     @empty($pem->obat->kategori->nama_kategori)
                     <td><p>belum diisi</p></td>
                     @else

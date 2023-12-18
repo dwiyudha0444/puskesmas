@@ -56,9 +56,9 @@
         </div>
         
         <div style="float: right;">
-            <p>TANGGAL PEMAKAIAN: <strong>12</strong></p>
+            <p>TANGGAL PEMAKAIAN: <strong>DESEMBER</strong></p>
             <p>NO PEMAKAIAN: <strong>12</strong></p>
-            <p>PENANGGUNG JAWAB: <strong>12</strong></p>
+            <p>PENANGGUNG JAWAB: <strong>{{ Auth::user()->name }}</strong></p>
         </div>
 
         <h2 style="clear: both;"></h2>
@@ -67,7 +67,6 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kategori</th>
                     <th>Tanggal Permintaan</th>
                     <th>Nama Obat</th>
                     <th>Jumlah</th>
@@ -78,13 +77,7 @@
                 @php $no= 1; @endphp
                 @foreach ($permintaan_detail as $per)
                 <tr>
-                    <td>{{ $no++ }}</td>
-
-                    @empty($per->obat->kategori->nama_kategori)
-                    <td><p>belum diisi</p></td>
-                    @else
-                    <td>{{ $per->obat->kategori->nama_kategori }}</td>
-                    @endempty
+                    <td>{{ $no++ }}</td> 
 
                     @empty($per->permintaan->tgl_permintaan)
                     <td><p>belum diisi</p></td>

@@ -64,9 +64,9 @@
         </div>
 
         <div style="float: right;">
-            <p>TANGGAL PEMAKAIAN: <strong>12</strong></p>
+            <p>TANGGAL PEMAKAIAN: <strong>DESEMBER</strong></p>
             <p>NO PEMAKAIAN: <strong>12</strong></p>
-            <p>PENANGGUNG JAWAB: <strong>12</strong></p>
+            <p>PENANGGUNG JAWAB: <strong>{{ Auth::user()->name }}</strong></p>
         </div>
 
         <h2 style="clear: both;"></h2>
@@ -75,10 +75,11 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th scope="col">Kategori</th>
                     <th scope="col">Nama Obat</th>
                     <th scope="col">Kode Obat</th>
-                    <th scope="col">Jumlah</th>
                     <th scope="col">Satuan</th>
+                    <th scope="col">Jumlah</th>
                     <th scope="col">Expired</th>
                 </tr>
             </thead>
@@ -89,25 +90,41 @@
                 @foreach ($persediaan as $per)
                     <tr>
                         <th>{{ $no++ }}</a></th>
-        
+
+                        @empty($per->obat->kategori->nama_kategori)
+                            <td>
+                                <p>belum diisi</p>
+                            </td>
+                        @else
+                            <td>{{ $per->obat->kategori->nama_kategori }}</td>
+                        @endempty
+
                         <td>
-                            @if(empty($per->obat->nama_obat))
+                            @if (empty($per->obat->nama_obat))
                                 <p>belum diisi</p>
                             @else
                                 {{ $per->obat->nama_obat }}
                             @endif
                         </td>
-        
+
                         <td>
-                            @if(empty($per->obat->kode_obat))
+                            @if (empty($per->obat->kode_obat))
                                 <p>belum diisi</p>
                             @else
                                 {{ $per->obat->kode_obat }}
                             @endif
                         </td>
-        
+
                         <td>
-                            @if(empty($per->jumlah_masuk))
+                            @if (empty($per->obat->satuan))
+                                <p>belum diisi</p>
+                            @else
+                                {{ $per->obat->satuan }}
+                            @endif
+                        </td>
+
+                        <td>
+                            @if (empty($per->jumlah_masuk))
                                 <p>belum diisi</p>
                             @else
                                 {{ $per->jumlah_masuk }}
@@ -115,15 +132,7 @@
                         </td>
 
                         <td>
-                            @if(empty($per->obat->satuan))
-                                <p>belum diisi</p>
-                            @else
-                                {{ $per->obat->satuan }}
-                            @endif
-                        </td>
-        
-                        <td>
-                            @if(empty($per->expired))
+                            @if (empty($per->expired))
                                 <p>belum diisi</p>
                             @else
                                 {{ $per->expired }}
