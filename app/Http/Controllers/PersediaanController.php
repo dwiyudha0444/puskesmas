@@ -6,12 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Persediaan;
 use App\Models\Obat;
 use DB;
+use PDF;
 
 class PersediaanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     public function expPDF()
+     {
+         $persediaan = Persediaan::all();
+         // dd($persediaan);
+         
+         $pdf = PDF::loadView('admin.persediaan.exppdf', ['persediaan' => $persediaan]);
+         
+         return $pdf->download('persediaan.pdf');
+     }
+
     public function index()
     {
         $persediaan = Persediaan::orderBy('id','DESC')->get();

@@ -106,13 +106,32 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-heading">PDF</li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="{{ url('kategori') }}">
-            <i class="bi bi-menu-button-wide"></i>
-            <span>Kategori</span>
-          </a>
-        </li>
-        
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="pemakaian_pdf">
+              <i class="bi bi-circle"></i><span>Pemakaian PDF</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="persediaan_pdf">
+              <i class="bi bi-circle"></i><span>Persediaan PDF</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="permintaan_detail_pdf">
+              <i class="bi bi-circle"></i><span>Permintaan PDF</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Forms Nav -->
+
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">

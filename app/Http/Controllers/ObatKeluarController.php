@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\ObatKeluar;
 use App\Models\Pemakaian;
 use DB;
+use PDF;
 
 class ObatKeluarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $obat_keluar = ObatKeluar::orderBy('id','DESC')->get();
@@ -32,21 +34,21 @@ class ObatKeluarController extends Controller
 
     public function store(Request $request)
     {
-        // Misalkan Anda menerima data dari formulir melalui $request
+        // Misalkan Anda menerima obat_keluar dari formulir melalui $request
         $tgl_keluar = $request->input('tgl_keluar');
         $keterangan_keluar = $request->input('keterangan_keluar');
         $id_users = $request->input('id_users');
         $id_obat_keluar = $request->input('id_obat_keluar');
         $id_obat = $request->input('id_obat');
     
-        // Memasukkan data ke dalam tabel tbl_obat_keluar dan mendapatkan ID baru
+        // Memasukkan obat_keluar ke dalam tabel tbl_obat_keluar dan mendapatkan ID baru
         $obatKeluarId = DB::table('tbl_obat_keluar')->insertGetId([
             'tgl_keluar' => $tgl_keluar,
             'keterangan_keluar' => $keterangan_keluar,
             'id_users' => $id_users,
         ]);
     
-        // Memasukkan data ke dalam tabel tbl_pemakaian dengan menggunakan ID baru
+        // Memasukkan obat_keluar ke dalam tabel tbl_pemakaian dengan menggunakan ID baru
         DB::table('tbl_pemakaian')->insert([
             'id_obat_keluar' => $obatKeluarId,
             'id_obat' => $id_obat,
@@ -105,4 +107,6 @@ class ObatKeluarController extends Controller
         return redirect()->route('obat-keluar.index')
             ->with('success','Data Berhasil Dihapus');
     }
+
+    
 }

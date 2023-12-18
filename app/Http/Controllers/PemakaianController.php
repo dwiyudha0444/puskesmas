@@ -7,12 +7,23 @@ use App\Models\Pemakaian;
 use App\Models\Obat;
 use App\Models\ObatKeluar;
 use DB;
+use PDF;
 
 class PemakaianController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function expPDF()
+    {
+        $pemakaian = Pemakaian::all();
+        // dd($pemakaian);
+        
+        $pdf = PDF::loadView('admin.pemakaian.exppdf', ['pemakaian' => $pemakaian]);
+        
+        return $pdf->download('pemakaian.pdf');
+    }
+
     public function index()
     {
         $pemakaian = Pemakaian::orderBy('id','DESC')->get();

@@ -60,3 +60,9 @@ Route::get('/kategori-edit/{id}',[KategoriController::class,'edit'])->middleware
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//PDF
+Route::get('pemakaian_pdf',[PemakaianController::class, 'expPDF']);
+Route::get('persediaan_pdf',[PersediaanController::class, 'expPDF']);
+Route::get('permintaan_detail_pdf',[PermintaanDetailController::class, 'expPDF']);

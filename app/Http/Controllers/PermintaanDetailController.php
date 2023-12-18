@@ -6,12 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\PermintaanDetail;
 use App\Models\Obat;
 use DB;
+use PDF;
 
 class PermintaanDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     public function expPDF()
+     {
+         $permintaan_detail = PermintaanDetail::whereMonth('created_at', now()->month)->get();
+         // dd($permintaan_detail);
+         
+         $pdf = PDF::loadView('admin.permintaan_detail.exppdf', ['permintaan_detail' => $permintaan_detail]);
+         
+         return $pdf->download('permintaan_detail.pdf');
+     }
+
     public function index()
     {
         $permintaan_detail = PermintaanDetail::orderBy('id','DESC')->get();

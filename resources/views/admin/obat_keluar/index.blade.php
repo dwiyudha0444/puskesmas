@@ -31,6 +31,10 @@
                             <path
                                 d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z" />
                         </svg></a>
+
+                        {{-- <a href="{{ url('obat_keluarpdf') }}" class="btn btn-info">
+                            <i class="fas fa-file-pdf"></i> Unduh Buku </a> --}}
+                            
                     <table class="table table-borderless datatable ">
                         <thead>
                             <tr>
