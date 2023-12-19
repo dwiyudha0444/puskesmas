@@ -37,6 +37,8 @@ class ObatKeluarController extends Controller
         // Misalkan Anda menerima obat_keluar dari formulir melalui $request
         $tgl_keluar = $request->input('tgl_keluar');
         $keterangan_keluar = $request->input('keterangan_keluar');
+        $satuan = $request->input('satuan');
+        $jumlah = $request->input('jumlah');
         $id_users = $request->input('id_users');
         $id_obat_keluar = $request->input('id_obat_keluar');
         $id_obat = $request->input('id_obat');
@@ -45,6 +47,8 @@ class ObatKeluarController extends Controller
         $obatKeluarId = DB::table('tbl_obat_keluar')->insertGetId([
             'tgl_keluar' => $tgl_keluar,
             'keterangan_keluar' => $keterangan_keluar,
+            'satuan' => $satuan,
+            'jumlah' => $jumlah,
             'id_users' => $id_users,
         ]);
     
@@ -82,7 +86,9 @@ class ObatKeluarController extends Controller
     {
         $request->validate([
             'tgl_keluar' => 'required',
-            'keterangan_keluar' => 'required'
+            'keterangan_keluar' => 'required',
+            'satuan' => 'required',
+            'jumlah' => 'required'
             ]);
             
             
@@ -90,6 +96,8 @@ class ObatKeluarController extends Controller
                 [
                     'tgl_keluar' => $request->tgl_keluar,
                     'keterangan_keluar' => $request->keterangan_keluar,
+                    'satuan' => $request->satuan,
+                    'jumlah' => $request->jumlah,
                     'created_at' => now(),
               ]);
             

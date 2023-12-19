@@ -41,6 +41,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Tanggal Keluar</th>
                                 <th scope="col">Keterangan Keluar</th>
+                                <th scope="col">Satuan</th>
+                                <th scope="col">Jumlah</th>
                                 <th scope="col">Username</th>
                                 @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
                                     <th scope="col">Action</th>
@@ -57,6 +59,8 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
                                     <td>{{ $obke->tgl_keluar }}</td>
                                     <td>{{ $obke->keterangan_keluar }}</td>
+                                    <td>{{ $obke->satuan }}</td>
+                                    <td>{{ $obke->jumlah }}</td>
                                     @empty($obke->user->name)
                                     <td><p>belum diisi</p></td>
                                     @else

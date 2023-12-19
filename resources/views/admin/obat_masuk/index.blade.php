@@ -37,6 +37,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Tanggal Masuk</th>
                                 <th scope="col">Keterangan Masuk</th>
+                                <th scope="col">Satuan</th>
+                                <th scope="col">Jumlah</th>
                                 <th scope="col">Username</th>
                                 @if (auth()->user()->role == 'kepala apoteker')
                                     <th scope="col">Action</th>
@@ -52,6 +54,8 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
                                     <td>{{ $obmas->tgl_masuk }}</td>
                                     <td>{{ $obmas->keterangan_masuk }}</td>
+                                    <td>{{ $obmas->satuan }}</td>
+                                    <td>{{ $obmas->jumlah }}</td>
                                     @empty($obmas->user->name)
                                         <td>
                                             <p>belum diisi</p>

@@ -50,6 +50,20 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Satuan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="satuan" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Jumlah</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="jumlah" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <input type="hidden" name="id_users" value="{{ Auth::user()->id }}" class="form-control">
                                     </div>

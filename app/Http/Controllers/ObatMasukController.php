@@ -33,6 +33,8 @@ class ObatMasukController extends Controller
         // Misalkan Anda menerima data dari formulir melalui $request
         $tgl_masuk = $request->input('tgl_masuk');
         $keterangan_masuk = $request->input('keterangan_masuk');
+        $satuan = $request->input('satuan');
+        $jumlah = $request->input('jumlah');
         $id_users = $request->input('id_users');
         $id_obat_masuk = $request->input('id_obat_masuk');
         
@@ -41,6 +43,8 @@ class ObatMasukController extends Controller
         $obatMasukId = DB::table('tbl_obat_masuk')->insertGetId([
             'tgl_masuk' => $tgl_masuk,
             'keterangan_masuk' => $keterangan_masuk,
+            'satuan' => $satuan,
+            'jumlah' => $jumlah,
             'id_users' => $id_users,
         ]);
 
@@ -77,7 +81,9 @@ class ObatMasukController extends Controller
     {
         $request->validate([
             'tgl_masuk' => 'required',
-            'keterangan_masuk' => 'required'
+            'keterangan_masuk' => 'required',
+            'satuan' => 'required',
+            'jumlah' => 'required'
             ]);
             
             
@@ -85,6 +91,8 @@ class ObatMasukController extends Controller
                 [
                     'tgl_masuk' => $request->tgl_masuk,
                     'keterangan_masuk' => $request->keterangan_masuk,
+                    'satuan' => $request->satuan,
+                    'jumlah' => $request->jumlah,
                     'created_at' => now(),
               ]);
             
