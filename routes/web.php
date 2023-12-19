@@ -28,7 +28,7 @@ use App\Http\Controllers\PersediaanController;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('home.index');
 });
 
 Route::resource('/admin',AdminController::class)->middleware('auth');

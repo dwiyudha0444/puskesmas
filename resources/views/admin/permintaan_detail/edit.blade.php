@@ -62,7 +62,12 @@
                                 <div class="row mb-3">
                                     <label for="jenis" class="col-sm-2 col-form-label">Status</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="status" value="{{ $per->status }}" class="form-control">
+                                        <select class="form-select" name="status">
+                                            <option selected>-- Pilih Status --</option>
+                                           
+                                            <option value="terima">terima</option>
+                                            <option value="tolak">tolak</option>
+                                        </select>
                                     </div>
                                 </div>
 
