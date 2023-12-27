@@ -10,7 +10,7 @@ class ObatMasuk extends Model
     //tambahkan kode untuk mapping ke tabel berita
     protected $table = 'tbl_obat_masuk';
     //mapping ke kolom fieldnya
-    protected $fillable = ['tgl_masuk','keterangan_masuk','id_users'];
+    protected $fillable = ['id_obat','tgl_masuk','keterangan_masuk','id_users'];
 
     public function user()
     {

@@ -38,7 +38,22 @@
                                 <div class="row mb-3">
                                     <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Keluar</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="tgl_keluar" class="form-control">
+                                        <input type="date" name="tgl_keluar" value="{{ date('Y-m-d') }}" readonly class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Obat</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" name="id_obat">
+                                            <option selected>-- Pilih Obat --</option>
+                                            @foreach($rel_obat as $ob)
+                                            @php
+                                            $sel2 = (old('id_obat') == $ob->id)? 'selected':'';
+                                            @endphp
+                                            <option value="{{ $ob->id }}" {{ $sel2 }}>{{ $ob->nama_obat }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

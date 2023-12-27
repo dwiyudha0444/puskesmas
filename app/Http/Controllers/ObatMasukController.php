@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ObatMasuk;
+use App\Models\Obat;
 use DB;
 
 class ObatMasukController extends Controller
@@ -22,7 +23,8 @@ class ObatMasukController extends Controller
      */
     public function create()
     {
-        return view('admin.obat_masuk.create');
+        $rel_obat = Obat::all();
+        return view('admin.obat_masuk.create',compact('rel_obat'));
     }
 
     /**
@@ -31,16 +33,18 @@ class ObatMasukController extends Controller
     public function store(Request $request)
     {
         // Misalkan Anda menerima data dari formulir melalui $request
+        $id_obat2 = $request->input('id_obat');
         $tgl_masuk = $request->input('tgl_masuk');
         $keterangan_masuk = $request->input('keterangan_masuk');
         $satuan = $request->input('satuan');
         $jumlah = $request->input('jumlah');
         $id_users = $request->input('id_users');
         $id_obat_masuk = $request->input('id_obat_masuk');
-        
+        $id_obat = $request->input('id_obat');
     
         // Memasukkan data ke dalam tabel tbl_obat_keluar dan mendapatkan ID baru
         $obatMasukId = DB::table('tbl_obat_masuk')->insertGetId([
+            'id_obat' => $id_obat2,
             'tgl_masuk' => $tgl_masuk,
             'keterangan_masuk' => $keterangan_masuk,
             'satuan' => $satuan,
@@ -51,6 +55,7 @@ class ObatMasukController extends Controller
         // Memasukkan data ke dalam tabel tbl_persediaan dengan menggunakan ID baru
         DB::table('tbl_persediaan')->insert([
             'id_obat_masuk' => $obatMasukId,
+            'id_obat' => $id_obat,
             
         ]);
 
@@ -81,6 +86,7 @@ class ObatMasukController extends Controller
     {
         $request->validate([
             'tgl_masuk' => 'required',
+            'id_obat' => 'required',
             'keterangan_masuk' => 'required',
             'satuan' => 'required',
             'jumlah' => 'required'
@@ -90,6 +96,7 @@ class ObatMasukController extends Controller
             DB::table('tbl_obat_masuk')->where('id',$id)->update(
                 [
                     'tgl_masuk' => $request->tgl_masuk,
+                    'id_obat' => $request->id_obat,
                     'keterangan_masuk' => $request->keterangan_masuk,
                     'satuan' => $request->satuan,
                     'jumlah' => $request->jumlah,
