@@ -55,12 +55,14 @@ class ObatKeluarController extends Controller
             'satuan' => $satuan,
             'jumlah' => $jumlah,
             'id_users' => $id_users,
+            
         ]);
     
         // Memasukkan obat_keluar ke dalam tabel tbl_pemakaian dengan menggunakan ID baru
         DB::table('tbl_pemakaian')->insert([
             'id_obat_keluar' => $obatKeluarId,
             'id_obat' => $id_obat,
+            'created_at' => now(),
         ]);
     
         return redirect('/obat-keluar')->with('success', 'Data Berhasil Diubah');

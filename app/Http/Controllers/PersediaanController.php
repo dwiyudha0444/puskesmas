@@ -16,12 +16,15 @@ class PersediaanController extends Controller
 
      public function expPDF()
      {
-         $persediaan = Persediaan::all();
-         // dd($persediaan);
-         
-         $pdf = PDF::loadView('admin.persediaan.exppdf', ['persediaan' => $persediaan]);
-         
-         return $pdf->download('persediaan.pdf');
+        $persediaan = Persediaan::whereMonth('created_at', now()->month)->get();
+        $latestPersediaan = Persediaan::latest()->first();
+        
+        $pdf = PDF::loadView('admin.persediaan.exppdf', [
+            'persediaan' => $persediaan,
+            'latestPersediaan' => $latestPersediaan,
+        ]);
+        
+        return $pdf->download('persediaan.pdf');
      }
 
     public function index()

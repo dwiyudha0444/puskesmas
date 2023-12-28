@@ -40,18 +40,19 @@
                                 
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Kategori</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select" name="id_kategori" value="{{ $ob->tgl_keluar }}">
-                                            <option  selected>-- Pilih Kategori --</option>
-                                            @foreach($rel_kategori as $ob)
-                                            @php
-                                            $sel2 = (old('id_kategori') == $ob->id)? 'selected':'';
-                                            @endphp
-                                            <option value="{{ $ob->id }}" {{ $sel2 }}>{{ $ob->nama_kategori }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                        <label class="col-sm-2 col-form-label">Kategori</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" name="id_kategori">
+                                                <option selected>-- Pilih Kategori --</option>
+                                                @foreach($rel_kategori as $kategori)
+                                                    @php
+                                                        $sel2 = (old('id_kategori') == $kategori->id)? 'selected':'';
+                                                    @endphp
+                                                    <option value="{{ $kategori->id }}" {{ $sel2 }}>{{ $kategori->nama_kategori }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    
                                 </div>
 
                                 <div class="row mb-3">

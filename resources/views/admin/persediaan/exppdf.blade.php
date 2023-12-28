@@ -60,12 +60,12 @@
         <div style="float: left;">
             <p>PUSKESMAS: <strong>BAE</strong></p>
             <p>KAB/KODYA: <strong>KUDUS</strong></p>
-            <p>KETERANGAN: <strong>KUDUS</strong></p>
+            <p>KETERANGAN: <strong>PERSEDIAAN</strong></p>
         </div>
 
         <div style="float: right;">
-            <p>TANGGAL PEMAKAIAN: <strong>DESEMBER</strong></p>
-            <p>NO PEMAKAIAN: <strong>12</strong></p>
+            <p>TANGGAL PEMAKAIAN: <strong>{{ $latestPersediaan->created_at->format('d F Y') }}</strong></p>
+            <p>NO PEMAKAIAN: <strong>IN-{{ $latestPersediaan->id }}</strong></p>
             <p>PENANGGUNG JAWAB: <strong>{{ Auth::user()->name }}</strong></p>
         </div>
 

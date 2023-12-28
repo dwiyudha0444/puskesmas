@@ -52,12 +52,12 @@
         <div style="float: left;">
             <p>PUSKESMAS: <strong>BAE</strong></p>
             <p>KAB/KODYA: <strong>KUDUS</strong></p>
-            <p>KETERANGAN: <strong>KUDUS</strong></p>
+            <p>KETERANGAN: <strong>PERMINTAAN</strong></p>
         </div>
         
         <div style="float: right;">
-            <p>TANGGAL PEMAKAIAN: <strong>DESEMBER</strong></p>
-            <p>NO PEMAKAIAN: <strong>12</strong></p>
+            <p>TANGGAL PEMAKAIAN: <strong>{{ $latestPermintaan->created_at->format('d F Y') }}</strong></p>
+            <p>NO PEMAKAIAN: <strong>PER-{{ $latestPermintaan->id }}</strong></p>
             <p>PENANGGUNG JAWAB: <strong>{{ Auth::user()->name }}</strong></p>
         </div>
 

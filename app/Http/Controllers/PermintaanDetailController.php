@@ -16,12 +16,16 @@ class PermintaanDetailController extends Controller
 
      public function expPDF()
      {
-         $permintaan_detail = PermintaanDetail::whereMonth('created_at', now()->month)->get();
-         // dd($permintaan_detail);
-         
-         $pdf = PDF::loadView('admin.permintaan_detail.exppdf', ['permintaan_detail' => $permintaan_detail]);
-         
-         return $pdf->download('permintaan_detail.pdf');
+        $permintaan_detail = PermintaanDetail::whereMonth('created_at', now()->month)->get();
+        $latestPermintaan = PermintaanDetail::latest()->first();
+        
+        $pdf = PDF::loadView('admin.permintaan_detail.exppdf', [
+            'permintaan_detail' => $permintaan_detail,
+            'latestPermintaan' => $latestPermintaan,
+        ]);
+        
+        return $pdf->download('permintaan_detail.pdf');
+
      }
 
     public function index()

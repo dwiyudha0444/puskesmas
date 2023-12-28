@@ -17,9 +17,12 @@ class PemakaianController extends Controller
     public function expPDF()
     {
         $pemakaian = Pemakaian::whereMonth('created_at', now()->month)->get();
-        // dd($pemakaian);
+        $latestPemakaian = Pemakaian::latest()->first();
         
-        $pdf = PDF::loadView('admin.pemakaian.exppdf', ['pemakaian' => $pemakaian]);
+        $pdf = PDF::loadView('admin.pemakaian.exppdf', [
+            'pemakaian' => $pemakaian,
+            'latestPemakaian' => $latestPemakaian,
+        ]);
         
         return $pdf->download('pemakaian.pdf');
     }

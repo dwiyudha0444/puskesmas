@@ -48,6 +48,7 @@ class PermintaanController extends Controller
                 DB::table('tbl_permintaan_detail')->insert([
                     'id_permintaan' => $obatPermintaanId,
                     'id_obat' => $id_obat,
+                    'created_at' => now(),
                 ]);
             
                 return redirect('/permintaan')->with('success', 'Data Berhasil Diubah');

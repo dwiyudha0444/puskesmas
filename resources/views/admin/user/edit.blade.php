@@ -41,8 +41,8 @@
                                     <div class="col-sm-10">
                                         <select name="role" class="form-control" id="inputRole">
                                             <option value="kepala puskesmas" {{ $us->role == 'kepala puskesmas' ? 'selected' : '' }}>kepala puskesmas</option>
-                                            <option value="kepala apotek" {{ $us->role == 'kepala apotek' ? 'selected' : '' }}>kepala apotek</option>
-                                            <option value="pegawai" {{ $us->role == 'pegawai' ? 'selected' : '' }}>pegawai</option>
+                                            <option value="kepala apoteker" {{ $us->role == 'kepala apoteker' ? 'selected' : '' }}>kepala apotek</option>
+                                            <option value="apoteker" {{ $us->role == 'apoteker' ? 'selected' : '' }}>apoteker</option>
                                         </select>
                                     </div>
                                 </div>

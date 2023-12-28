@@ -56,6 +56,7 @@ class ObatMasukController extends Controller
         DB::table('tbl_persediaan')->insert([
             'id_obat_masuk' => $obatMasukId,
             'id_obat' => $id_obat,
+            'created_at' => now(),
             
         ]);
 
@@ -76,7 +77,8 @@ class ObatMasukController extends Controller
     public function edit(string $id)
     {
         $obmas = ObatMasuk::find($id);
-        return view('admin.obat_masuk.edit',compact('obmas'));
+        $rel_obat = Obat::all();
+        return view('admin.obat_masuk.edit',compact('obmas','rel_obat'));
     }
 
     /**
