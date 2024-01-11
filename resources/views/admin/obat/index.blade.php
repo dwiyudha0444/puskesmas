@@ -39,6 +39,12 @@
                                 <th scope="col">Nama Obat</th>
                                 <th scope="col">Kode Obat</th>
                                 <th scope="col">Satuan</th>
+                                <th scope="col">Stok Awal</th>
+                                <th scope="col">Penerimaan</th>
+                                <th scope="col">Persediaan</th>
+                                <th scope="col">Pemakaian</th>
+                                <th scope="col">Sisa Stok</th>
+                                <th scope="col">Permintaan</th>
                                 @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
                                     <th scope="col">Action</th>
                                 @endif
@@ -61,6 +67,12 @@
                                     <td>{{ $ob->nama_obat }}</td>
                                     <td>{{ $ob->kode_obat }}</td>
                                     <td>{{ $ob->satuan }}</td>
+                                    <td>{{ $ob->stok_awal }}</td>
+                                    <td>{{ $ob->penerimaan }}</td>
+                                    <td>{{ $ob->persediaan }}</td>
+                                    <td>{{ $ob->pemakaian }}</td>
+                                    <td>{{ $ob->sisa_stok }}</td>
+                                    <td>{{ $ob->permintaan }}</td>
                                     @if (auth()->user()->role == 'apoteker' || auth()->user()->role == 'kepala apoteker')
                                     <td>
 

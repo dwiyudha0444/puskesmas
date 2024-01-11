@@ -15,6 +15,8 @@ use App\Http\Controllers\PermintaanDetailController;
 use App\Http\Controllers\PemakaianController;
 use App\Http\Controllers\PersediaanController;
 
+use App\Http\Controllers\LplpoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +68,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('pemakaian_pdf',[PemakaianController::class, 'expPDF']);
 Route::get('persediaan_pdf',[PersediaanController::class, 'expPDF']);
 Route::get('permintaan_detail_pdf',[PermintaanDetailController::class, 'expPDF']);
+Route::get('lplpo_pdf',[LplpoController::class, 'expPDF']);

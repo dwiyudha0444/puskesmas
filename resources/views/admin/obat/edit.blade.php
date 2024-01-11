@@ -76,6 +76,49 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Stok Awal</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="stok_awal" value="{{ $ob->stok_awal }}"class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Sisa Stok</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="sisa_stok" value="{{ $ob->sisa_stok }}" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Penerimaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="penerimaan" value="{{ $ob->penerimaan }}" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Persediaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="persediaan" value="{{ $ob->persediaan }}" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Pemakaian</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="pemakaian" value="{{ $ob->pemakaian }}" class="form-control">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Permintaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="permintaan" value="{{ $ob->permintaan }}" class="form-control">
+                                    </div>
+                                </div>
+
                                 
 
                                 <div class="row mb-3">

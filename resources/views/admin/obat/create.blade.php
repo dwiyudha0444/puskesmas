@@ -72,6 +72,49 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Stok Awal</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="stok_awal" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Sisa Stok</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="sisa_stok" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Penerimaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="penerimaan" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Persediaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="persediaan" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Pemakaian</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="pemakaian" class="form-control">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="row mb-3">
+                                    <label for="inputDate" class="col-sm-2 col-form-label">Permintaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="permintaan" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Simpan</label>
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
