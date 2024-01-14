@@ -41,8 +41,9 @@
                                 <th scope="col">Jumlah Keluar</th>
                                 <th scope="col">Persediaan</th>
                                 <th scope="col">Tanggal Keluar</th>
-                                @if(auth()->user()->role == 'kepala apoteker')
-                                <th scope="col">Action</th>
+                                <th scope="col">Masa Aktif</th>
+                                @if (auth()->user()->role == 'kepala apoteker')
+                                    <th scope="col">Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -55,54 +56,76 @@
                                     <th scope="row"><a href="#">{{ $no++ }}</a></th>
 
                                     @empty($per->obat->nama_obat)
-                                    <td><p>belum diisi</p></td>
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
                                     @else
-                                    <td>{{ $per->obat->nama_obat }}</td>
+                                        <td>{{ $per->obat->nama_obat }}</td>
                                     @endempty
 
                                     @empty($per->expired)
-                                    <td><p>belum diisi</p></td>
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
                                     @else
-                                    <td>{{ $per->expired }}</td>
+                                        <td>{{ $per->expired }}</td>
                                     @endempty
 
                                     @empty($per->persediaan_awal)
-                                    <td><p>belum diisi</p></td>
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
                                     @else
-                                    <td>{{ $per->persediaan_awal }}</td>
+                                        <td>{{ $per->persediaan_awal }}</td>
                                     @endempty
 
                                     @empty($per->jumlah_masuk)
-                                    <td><p>belum diisi</p></td>
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
                                     @else
-                                    <td>{{ $per->jumlah_masuk }}</td>
+                                        <td>{{ $per->jumlah_masuk }}</td>
                                     @endempty
-                                    
-                                    @empty($per->persediaan)
-                                    <td><p>belum diisi</p></td>
-                                    @else
-                                    <td>{{ $per->persediaan }}</td>
-                                    @endempty
-                                    
-                                    @empty($per->obat_masuk->tgl_masuk)
-                                    <td><p>belum diisi</p></td>
-                                    @else
-                                    <td>{{ $per->obat_masuk->tgl_masuk }}</td>
-                                    @endempty
-                                    @if(auth()->user()->role == 'kepala apoteker')
-                                    <td>
 
-                                        <form method="POST" action="{{ route('persediaan.destroy', $per->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
-                                        
-                                        {{-- <a class="custom-btn custom-btn-hijau"
+                                    @empty($per->persediaan)
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
+                                    @else
+                                        <td>{{ $per->persediaan }}</td>
+                                    @endempty
+
+                                    @empty($per->obat_masuk->tgl_masuk)
+                                        <td>
+                                            <p>belum diisi</p>
+                                        </td>
+                                    @else
+                                        <td>{{ $per->obat_masuk->tgl_masuk }}</td>
+                                    @endempty                            
+                                    <?php
+                                    $tglMasuk = \Carbon\Carbon::parse($per->obat_masuk->tgl_masuk);
+                                    $createdAt = \Carbon\Carbon::parse($per->expired);
+                                    
+                                    // Menghitung selisih
+                                    $selisih = $tglMasuk->diff($createdAt);
+                                    ?>
+                                    <td> {{ $selisih->days }} hari</td>
+                                    
+                                
+                                    @if (auth()->user()->role == 'kepala apoteker')
+                                        <td>
+
+                                            <form method="POST" action="{{ route('persediaan.destroy', $per->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="custom-btn custom-btn-merah">Hapus</button>
+
+                                                {{-- <a class="custom-btn custom-btn-hijau"
                                         href="{{ route('obat-keluar.show',$per->id) }}">Detail</a> --}}
-                                        <a class="custom-btn"
-                                            href="{{ url('persediaan-edit',$per->id) }}">Edit</a>
-                                        </form>
-                                    </td>
+                                                <a class="custom-btn"
+                                                    href="{{ url('persediaan-edit', $per->id) }}">Edit</a>
+                                            </form>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
